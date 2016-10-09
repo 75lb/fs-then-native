@@ -1,7 +1,7 @@
 {
   "name": "fs-then-native",
   "author": "Lloyd Brookes <75pound@gmail.com>",
-  "version": "0.1.2",
+  "version": "1.0.0",
   "description": "Wraps the Node.js fs library with a Promise API using whichever `Promise` implementation is available",
   "repository": "https://github.com/75lb/fs-then-native.git",
   "license": "MIT",
