@@ -1,7 +1,7 @@
 {
   "name": "fs-then-native",
   "author": "Lloyd Brookes <75pound@gmail.com>",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "fs-then-native",
   "repository": "https://github.com/75lb/fs-then-native.git",
   "license": "MIT",
