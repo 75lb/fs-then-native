@@ -50,3 +50,65 @@ runner.test('.readFile(): bad', function () {
       }
     })
 })
+
+runner.test('.readdir(): good', function () {
+  return fsThen.readdir('src/test/fixture')
+    .then(files => {
+      a.deepStrictEqual(files, [ 'file.txt' ])
+    })
+})
+
+runner.test('.readdir(): bad', function () {
+  return fsThen.readdir('lidnfklgeroasosn')
+    .then(files => {
+      throw new Error("shouldn't reach here")
+    })
+    .catch(err => {
+      if (err.code === 'ENOENT') {
+        return
+      } else {
+        throw err
+      }
+    })
+})
+
+runner.test('.mkdir() and .rmdir(): good', function () {
+  return fsThen.mkdir('tmp/deleteMe')
+    .then(() => {
+      a.strictEqual(fs.existsSync('tmp/deleteMe'), true)
+    })
+    .then(() => {
+      return fsThen.rmdir('tmp/deleteMe')
+        .then(() => {
+          a.strictEqual(fs.existsSync('tmp/deleteMe'), false)
+        })
+    })
+})
+
+runner.test('.mkdir(): bad', function () {
+  return fsThen.mkdir()
+    .then(files => {
+      throw new Error("shouldn't reach here")
+    })
+    .catch(err => {
+      if ((err instanceof TypeError)) {
+        return
+      } else {
+        throw err
+      }
+    })
+})
+
+runner.test('.rmdir(): bad', function () {
+  return fsThen.rmdir()
+    .then(files => {
+      throw new Error("shouldn't reach here")
+    })
+    .catch(err => {
+      if ((err instanceof TypeError)) {
+        return
+      } else {
+        throw err
+      }
+    })
+})

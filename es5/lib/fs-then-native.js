@@ -23,4 +23,34 @@ fsThen.readFile = function () {
   });
 };
 
+fsThen.readdir = function () {
+  var _arguments3 = arguments;
+
+  return new Promise(function (resolve, reject) {
+    fs.readdir.apply(fs, Array.prototype.slice.call(_arguments3).concat([function (err, data) {
+      if (err) reject(err);else resolve(data);
+    }]));
+  });
+};
+
+fsThen.rmdir = function () {
+  var _arguments4 = arguments;
+
+  return new Promise(function (resolve, reject) {
+    fs.rmdir.apply(fs, Array.prototype.slice.call(_arguments4).concat([function (err) {
+      if (err) reject(err);else resolve();
+    }]));
+  });
+};
+
+fsThen.mkdir = function () {
+  var _arguments5 = arguments;
+
+  return new Promise(function (resolve, reject) {
+    fs.mkdir.apply(fs, Array.prototype.slice.call(_arguments5).concat([function (err) {
+      if (err) reject(err);else resolve();
+    }]));
+  });
+};
+
 module.exports = fsThen;

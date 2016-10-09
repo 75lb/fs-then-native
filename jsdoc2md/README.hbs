@@ -5,7 +5,21 @@
 [![Dependency Status](https://david-dm.org/75lb/fs-then-native.svg)](https://david-dm.org/75lb/fs-then-native)
 [![js-standard-style](https://img.shields.io/badge/code%20style-standard-brightgreen.svg)](https://github.com/feross/standard)
 
-{{>main}}
+# fs-then-native
+
+The Node.js fs library with a Promise API.
+
+## Synopsis
+
+```js
+fs.readFile('file.txt', 'utf8')
+  .then(content => {
+    // process file content
+  })
+  .catch(err => {
+    // handle exception
+  })
+```
 
 * * *
 

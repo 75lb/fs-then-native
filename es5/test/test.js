@@ -45,3 +45,55 @@ runner.test('.readFile(): bad', function () {
     }
   });
 });
+
+runner.test('.readdir(): good', function () {
+  return fsThen.readdir('src/test/fixture').then(function (files) {
+    a.deepStrictEqual(files, ['file.txt']);
+  });
+});
+
+runner.test('.readdir(): bad', function () {
+  return fsThen.readdir('lidnfklgeroasosn').then(function (files) {
+    throw new Error("shouldn't reach here");
+  }).catch(function (err) {
+    if (err.code === 'ENOENT') {
+      return;
+    } else {
+      throw err;
+    }
+  });
+});
+
+runner.test('.mkdir() and .rmdir(): good', function () {
+  return fsThen.mkdir('tmp/deleteMe').then(function () {
+    a.strictEqual(fs.existsSync('tmp/deleteMe'), true);
+  }).then(function () {
+    return fsThen.rmdir('tmp/deleteMe').then(function () {
+      a.strictEqual(fs.existsSync('tmp/deleteMe'), false);
+    });
+  });
+});
+
+runner.test('.mkdir(): bad', function () {
+  return fsThen.mkdir().then(function (files) {
+    throw new Error("shouldn't reach here");
+  }).catch(function (err) {
+    if (err instanceof TypeError) {
+      return;
+    } else {
+      throw err;
+    }
+  });
+});
+
+runner.test('.rmdir(): bad', function () {
+  return fsThen.rmdir().then(function (files) {
+    throw new Error("shouldn't reach here");
+  }).catch(function (err) {
+    if (err instanceof TypeError) {
+      return;
+    } else {
+      throw err;
+    }
+  });
+});
