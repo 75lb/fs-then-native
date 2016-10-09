@@ -101,3 +101,25 @@ runner.test('.rmdir(): bad', function () {
 runner.test('everything else exists', function () {
   a.ok(fsThen.chown && fsThen.lstat && fsThen.symlink && fs.watch);
 });
+
+runner.test('.unlink(): good', function () {
+  var filename = 'tmp/deleteThisFile';
+  return fsThen.writeFile(filename, '').then(function () {
+    a.strictEqual(fs.existsSync(filename), true);
+    return fsThen.unlink(filename).then(function () {
+      a.strictEqual(fs.existsSync(filename), false);
+    });
+  });
+});
+
+runner.test('.unlink(): bad', function () {
+  return fsThen.unlink('lidnfklgeroasosn').then(function (content) {
+    throw new Error("shouldn't reach here");
+  }).catch(function (err) {
+    if (err.code === 'ENOENT') {
+      return;
+    } else {
+      throw err;
+    }
+  });
+});

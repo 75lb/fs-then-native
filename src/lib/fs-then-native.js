@@ -52,4 +52,13 @@ fsThen.mkdir = function () {
   })
 }
 
+fsThen.unlink = function () {
+  return new Promise((resolve, reject) => {
+    fs.unlink(...arguments, (err) => {
+      if (err) reject(err)
+      else resolve()
+    })
+  })
+}
+
 module.exports = fsThen

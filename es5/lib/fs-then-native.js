@@ -57,4 +57,14 @@ fsThen.mkdir = function () {
   });
 };
 
+fsThen.unlink = function () {
+  var _arguments6 = arguments;
+
+  return new Promise(function (resolve, reject) {
+    fs.unlink.apply(fs, Array.prototype.slice.call(_arguments6).concat([function (err) {
+      if (err) reject(err);else resolve();
+    }]));
+  });
+};
+
 module.exports = fsThen;
