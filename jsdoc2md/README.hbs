@@ -7,7 +7,7 @@
 
 # fs-then-native
 
-The Node.js fs library with a Promise API.
+A minimal wrapper around the [Node.js fs library](https://nodejs.org/dist/latest-v6.x/docs/api/fs.html) adding a Promise API. It uses whichever `Promise` implementation is available, leaving responsibility one exists to the user.
 
 ## Synopsis
 
