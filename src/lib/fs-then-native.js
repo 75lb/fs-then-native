@@ -1,6 +1,11 @@
 'use strict'
 const fs = require('fs')
-const fsThen = Object.assign({}, fs)
+const fsThen = {}
+
+/* quick clone */
+for (var method in fs) {
+  fsThen[method] = fs[method]
+}
 
 fsThen.writeFile = function () {
   return new Promise((resolve, reject) => {

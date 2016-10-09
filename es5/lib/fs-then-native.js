@@ -1,7 +1,11 @@
 'use strict';
 
 var fs = require('fs');
-var fsThen = Object.assign({}, fs);
+var fsThen = {};
+
+for (var method in fs) {
+  fsThen[method] = fs[method];
+}
 
 fsThen.writeFile = function () {
   var _arguments = arguments;

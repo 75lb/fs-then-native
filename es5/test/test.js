@@ -97,3 +97,7 @@ runner.test('.rmdir(): bad', function () {
     }
   });
 });
+
+runner.test('everything else exists', function () {
+  a.ok(fsThen.chown && fsThen.lstat && fsThen.symlink && fs.watch);
+});
