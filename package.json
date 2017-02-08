@@ -5,25 +5,19 @@
   "description": "Wraps the Node.js fs library with a Promise API using whichever `Promise` implementation is available",
   "repository": "https://github.com/75lb/fs-then-native.git",
   "license": "MIT",
-  "main": "main.js",
-  "keywords": [],
+  "main": "lib/fs-then-native",
+  "keywords": [ "fs", "then", "promise", "native", "promises", "readFile", "writeFile" ],
   "engines": {
-    "node": ">=0.10.0"
+    "node": ">=4.0.0"
   },
   "scripts": {
-    "test": "node test.js",
-    "docs": "jsdoc2md -t jsdoc2md/README.hbs src/lib/*.js > README.md; echo",
-    "es5": "rm -rf es5 && babel --presets babel-preset-es2015 --no-comments src --out-dir es5",
-    "cover": "istanbul cover ./node_modules/.bin/test-runner src/test/*.js && cat coverage/lcov.info | ./node_modules/.bin/coveralls && rm -rf coverage; echo"
+    "test": "test-runner test/*.js",
+    "docs": "jsdoc2md -t jsdoc2md/README.hbs lib/*.js > README.md; echo",
+    "cover": "istanbul cover ./node_modules/.bin/test-runner test/*.js && cat coverage/lcov.info | ./node_modules/.bin/coveralls && rm -rf coverage; echo"
   },
   "devDependencies": {
-    "babel-preset-es2015": "^6.16.0",
-    "core-assert": "^0.2.1",
-    "coveralls": "^2.11.14",
+    "coveralls": "^2.11.16",
     "rimraf": "^2.5.4",
-    "test-runner": "^0.2.5"
-  },
-  "dependencies": {
-    "feature-detect-es6": "^1.3.1"
+    "test-runner": "^0.3.0"
   }
 }

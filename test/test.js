@@ -1,10 +1,10 @@
 'use strict'
 const TestRunner = require('test-runner')
-const fsThen = require('../../')
+const fsThen = require('../')
 const fs = require('fs')
 const runner = new TestRunner()
 const rimraf = require('rimraf')
-const a = require('core-assert')
+const a = require('assert')
 
 rimraf.sync('tmp')
 fsThen.mkdirSync('tmp')
@@ -31,7 +31,7 @@ runner.test('.writeFile(): bad', function () {
 })
 
 runner.test('.readFile(): good', function () {
-  return fsThen.readFile('src/test/fixture/file.txt', 'utf-8')
+  return fsThen.readFile('test/fixture/file.txt', 'utf-8')
     .then(content => {
       a.strictEqual(content, 'test\n')
     })
@@ -52,7 +52,7 @@ runner.test('.readFile(): bad', function () {
 })
 
 runner.test('.readdir(): good', function () {
-  return fsThen.readdir('src/test/fixture')
+  return fsThen.readdir('test/fixture')
     .then(files => {
       a.deepStrictEqual(files, [ 'file.txt' ])
     })
