@@ -5,7 +5,7 @@
   "description": "Wraps the Node.js fs library with a Promise API using whichever `Promise` implementation is available",
   "repository": "https://github.com/75lb/fs-then-native.git",
   "license": "MIT",
-  "main": "lib/fs-then-native",
+  "main": "fs-then-native",
   "keywords": [
     "fs",
     "then",
@@ -20,12 +20,16 @@
   },
   "scripts": {
     "test": "test-runner test/*.js",
-    "docs": "jsdoc2md -t jsdoc2md/README.hbs lib/*.js > README.md; echo",
+    "docs": "jsdoc2md -t README.hbs fs-then-native.js > README.md; echo",
     "cover": "istanbul cover ./node_modules/.bin/test-runner test/*.js && cat coverage/lcov.info | ./node_modules/.bin/coveralls && rm -rf coverage; echo"
   },
   "devDependencies": {
-    "coveralls": "^2.11.16",
-    "rimraf": "^2.5.4",
+    "coveralls": "^2.13.1",
+    "rimraf": "^2.6.1",
     "test-runner": "^0.3.0"
+  },
+  "dependencies": {
+    "glob": "^7.1.2",
+    "typical": "^2.6.1"
   }
 }

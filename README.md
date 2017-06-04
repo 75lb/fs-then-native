@@ -12,7 +12,7 @@ A minimal wrapper around the [Node.js fs library](https://nodejs.org/dist/latest
 ## Synopsis
 
 ```js
-import fs from 'fs-then-native';
+const fs = require('fs-then-native')
 
 fs.readFile('file.txt', 'utf8')
   .then(content => {
